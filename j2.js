@@ -2,18 +2,17 @@ require("dotenv").config();
 const QuoterArtifact = require("@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json");
 const ethers = require("ethers");
 const Web3 = require("web3");
-const abis = require("./abis");
-const tokens = require("./tokens");
-const ArbitrageContractABI = require("./abis/ArbitrageContract.json");
+const abis = require("./utils/abis");
+const { tokens } = require("./config/config");
+const { getPath, createProvider, createWeb3 } = require("./utils/utils");
+const ArbitrageContractABI = require("./utils/abis/ArbitrageContract.json");
 
-const provider = new ethers.providers.JsonRpcProvider(
+const provider = createProvider(
   "https://arb-mainnet.g.alchemy.com/v2/b6BZoLf79qBNncYGeYPFqyy6pMapAzLk"
 );
 
-const web3 = new Web3(
-  new Web3.providers.WebsocketProvider(
-    "wss://arb-mainnet.g.alchemy.com/v2/b6BZoLf79qBNncYGeYPFqyy6pMapAzLk"
-  )
+const web3 = createWeb3(
+  "wss://arb-mainnet.g.alchemy.com/v2/b6BZoLf79qBNncYGeYPFqyy6pMapAzLk"
 );
 const sushi = new web3.eth.Contract(
   abis.sushiswap,
@@ -28,7 +27,7 @@ const main = async (tokens) => {
       provider
     );
 
-    for (let i = 0; i < tokens.length; ) {
+    for (let i = 0; i < tokens.length;) {
       let inputAddress = tokens[i].address;
       let inputDecimals = tokens[i].decimals;
       let fee = 500;
@@ -65,8 +64,7 @@ const main = async (tokens) => {
           .getAmountsOut(weiwei, [outputAddress, inputAddress])
           .call();
         console.log(
-          `Swap ${tokensIn} ${
-            i > 0 ? tokens[i - 1].symbol : tokens[i].symbol
+          `Swap ${tokensIn} ${i > 0 ? tokens[i - 1].symbol : tokens[i].symbol
           } for ${formattedQuoteIn} ${tokens[j].symbol}`
         );
         console.log(
@@ -118,38 +116,7 @@ const getArbitrage = async (token1, token2) => {
   const reciept = await tnx.wait();
 };
 
-// getArbitrage(
-//   "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
-//   "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9"
-// );
 
-function getPath(tokens, fee) {
-  let feeArray = fee.split(",");
-  let hexfee = getFee(feeArray);
-
-  let tokenArray = [...tokens.map((x) => x.slice(2))];
-  let path = "0x";
-  for (let i = 0; i < tokenArray.length; i++) {
-    if (i != tokenArray.length - 1) {
-      path = path + tokenArray[i].toLowerCase() + hexfee[i];
-    } else {
-      path = path + tokenArray[i].toLowerCase();
-    }
-  }
-  return path;
-}
-function getFee(fee) {
-  let hexFeeArray = [];
-  for (let i = 0; i < fee.length; i++) {
-    let hexfee = Number(fee[i]).toString(16);
-    if (hexfee.length == 3) {
-      hexFeeArray.push("000" + hexfee);
-    } else {
-      hexFeeArray.push("00" + hexfee);
-    }
-  }
-  return hexFeeArray;
-}
 
 main(tokens)
   .then(() => process.exit(0))
