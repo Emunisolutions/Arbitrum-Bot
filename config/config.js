@@ -1,7 +1,7 @@
 // config/config.js
 require("dotenv").config();
 
-const tokens = [
+const TOKENS = [
     {
         address: "0xda10009cbd5d07dd0cecc66161fc93d7c9000da1",
         symbol: "DAI",
@@ -25,6 +25,10 @@ const tokens = [
 ];
 module.exports = {
     PRIVATE_KEY: process.env.PRIVATE_KEY,
-    ALCHEMY_URL: process.env.ALCHEMY_URL || "https://arb-mainnet.g.alchemy.com/v2/b6BZoLf79qBNncYGeYPFqyy6pMapAzLk",
-    tokens
+    ALCHEMY_URL: process.env.ALCHEMY_URL,
+    WS_ALCHEMY_URL: process.env.WS_ALCHEMY_URL,
+    SUSHI_SWAP_ADD: process.env.SUSHI_SWAP,
+    QOUTER_CONTRACT_ADD: process.env.QOUTER_CONTRACT_ADD,
+    ARBITRAGE_CONTRACT_ADD: process.env.ARBITRAGE_CONTRACT_ADD,
+    TOKENS
 };

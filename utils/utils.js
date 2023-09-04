@@ -1,6 +1,18 @@
+// utils.js
 const ethers = require("ethers");
 const Web3 = require("web3");
 
+function createProvider(url) {
+    return new ethers.providers.JsonRpcProvider(url);
+}
+
+function createWeb3(url) {
+    return new Web3(new Web3.providers.WebsocketProvider(url));
+}
+
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
 function getPath(tokens, fee) {
     let feeArray = fee.split(',');
     let hexfee = getFee(feeArray);
@@ -30,11 +42,8 @@ function getFee(fee) {
 }
 
 module.exports = {
+    createProvider,
+    createWeb3,
+    sleep,
     getPath,
-    getFee,
-    createProvider: (url) => new ethers.providers.JsonRpcProvider(url),
-    createWeb3: (url) => new Web3(new Web3.providers.WebsocketProvider(url)),
-    formatWeiToEth: (wei, decimals) => ethers.utils.formatUnits(wei, decimals),
-    parseEthToWei: (eth, decimals) => ethers.utils.parseUnits(eth, decimals),
-
 };
