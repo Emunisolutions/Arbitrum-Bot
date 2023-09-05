@@ -1,4 +1,3 @@
-// utils.js
 const ethers = require("ethers");
 const Web3 = require("web3");
 
