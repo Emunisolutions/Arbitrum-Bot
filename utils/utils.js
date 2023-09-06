@@ -6,7 +6,14 @@ function createProvider(url) {
 }
 
 function createWeb3(url) {
-    return new Web3(new Web3.providers.WebsocketProvider(url));
+    return new Web3(new Web3.providers.WebsocketProvider(url, {
+        reconnect: {
+            auto: true,
+            delay: 5000, // ms
+            maxAttempts: 30,
+            onTimeout: false
+        }
+    }));
 }
 
 function sleep(ms) {

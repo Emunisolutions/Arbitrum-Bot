@@ -10,11 +10,12 @@ const { createProvider, createWeb3, sleep, getPath } = require('./utils/utils');
 const QuoterArtifact = require('@uniswap/v3-periphery/artifacts/contracts/lens/Quoter.sol/Quoter.json');
 const abis = require('./utils/abis');
 
-const RETRY_DELAY_MS = 5000; //5000 = 5sec
+const RETRY_DELAY_MS = 1000; //5000 = 5sec
 const MAX_RETRIES = 10;
 
 const provider = createProvider(ALCHEMY_URL);
-const web3 = createWeb3(WS_ALCHEMY_URL);
+let web3 = null;
+web3 = createWeb3(WS_ALCHEMY_URL);
 
 const sushi = new web3.eth.Contract(abis.sushiswap, SUSHI_SWAP_ADD);
 
