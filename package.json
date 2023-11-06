@@ -4,7 +4,7 @@
   "description": "",
   "main": "j.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,7 +14,8 @@
     "@uniswap/v3-core": "^1.0.1",
     "@uniswap/v3-periphery": "^1.4.3",
     "@uniswap/v3-sdk": "^3.10.0",
-    "ethers": "^5.7.0",
+    "ethers": "^5.7.2",
+    "pino": "^8.16.1",
     "web3": "^1.5.1"
   }
 }
