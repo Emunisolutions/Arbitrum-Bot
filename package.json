@@ -1,21 +1,17 @@
 {
-  "name": "package.json",
-  "version": "1.0.0",
-  "description": "",
-  "main": "j.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "hardhat-project",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.19.0"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@uniswap/sdk": "^3.0.3",
+    "@balancer-labs/v2-vault": "^3.0.1",
+    "@openzeppelin/contracts": "^v4.9.0-rc.0",
+    "@remix-project/remixd": "^0.6.19",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "@uniswap/v3-core": "^1.0.1",
-    "@uniswap/v3-periphery": "^1.4.3",
-    "@uniswap/v3-sdk": "^3.10.0",
-    "ethers": "^5.7.2",
-    "pino": "^8.16.1",
-    "web3": "^1.5.1"
+    "@uniswap/v3-periphery": "^1.4.4",
+    "fs": "^0.0.1-security"
   }
 }
