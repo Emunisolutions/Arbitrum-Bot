@@ -24,6 +24,8 @@ npm install
 FORKING=true //fasle for actual transaction
 CHAIN_ID="42161"  1 for ETHEREUM
 ONE_INCH_SWAP=false //true for actual transaction only
+BOT_ID="" // your bot id (@BotFather)
+CHAT_ID="" // your chat id (@GetMyChatID_Bot)
 ```
 
 RUN the script using command:

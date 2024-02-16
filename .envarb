@@ -1,47 +1,75 @@
-#========================================================================================#
-#                                   Script Config                                        #
+\#========================================================================================#
+#                                   WALLET CONFIG                                        #
 #========================================================================================#
 
 #wallet PrivateKey
 WALLET="9faba60e359dbf86af99585f85830ce18d8671853400796571e0865f0771084b"
 
+#FEE collector Address
+RECIPIENT="0x5eA180d1BCCda8993782886a06C20d307069DC3e"
+
 #Chain ID
 CHAIN_ID="42161"
 
 #infura ID
-URL="https://arbitrum-mainnet.infura.io/v3/6da4e973f4ce4bfa905fca9323610818"
+URL="https://arbitrum-mainnet.core.chainstack.com/5e7976ddb93eb1247deec7791c1b1dee"
+# URL="https://arbitrum-mainnet.core.chainstack.com/8e301c679e05997e95e9da17b9896ebf"
+# URL="https://arbitrum-mainnet.infura.io/v3/6da4e973f4ce4bfa905fca9323610818"
+          
+#1inch
+ONE_INCH="laLwuy1RvBT1sw3ePaCBWhP6i9sZ27sL"
+
+#swap with oneinch
+ONE_INCH_SWAP=true
 
 
-#Uniswapv3 addresses and yldr addresses
+
+#========================================================================================#
+#                                UNISWAP-YLDR ADRRESSES                                  #
+#========================================================================================#
+
+      
+UNISWAPV3ROUTER="0xE592427A0AEce92De3Edee1F18E0157C05861564"
+UNISWAPV3QUOTER="0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6"
 NONFUNGIBLEPOSITIONMANAGERADDRESS="0xC36442b4a4522E871399CD717aBDD847Ab11FE88"
-FACTORYADDRESS ="0x1F98431c8aD98523631AE4a59f267346ea31F984"
+FACTORYADDRESS="0x1F98431c8aD98523631AE4a59f267346ea31F984"
 UNISWAPV3LEVERAGEADDRESS="0x13b82C379e4209aCC43005f0B2b661945557F56E"
 UNISWAPV3DEPOSITZAP="0xC29CEEfe88a1eD4384a1BaD42592e70a3E3b0B86"
 ASSETCONVERTER="0xAA81Ea3AbB14fD0c9b3bE83e7a2fC2f8c7D87707"
 FLASHLOANPROVIDER="0x337b15E9Bc488B919Fe6D2ede388DF8F427Bc704"
+
+
+
+#========================================================================================#
+#                                TOKENS CONDFIG                                          #
+#========================================================================================#
+
 
 #token 0 Details
 TOA="0x912CE59144191C1204E64559FE8253a0e49E6548"
 TOD="18"
 TOS="ARB"
 TON="Arbitrum"
-
+  
 #token 1 Details
 T1A="0x82aF49447D8a07e3bd95BD0d56f35241523fBab1"
 T1D="18"
 T1S="WETH"
 T1N="Wrapped Ether"
-
-
+     
 #Order amount
-LIQUIDITY_AMOUNT="0.002"
+LIQUIDITY_AMOUNT="0.0002"
 
 #upper lower bounds
-UPPER_PERCENTAGE=100             #100 = 1%
-LOWER_PERCETAGE=100
+UPPER_PERCENTAGE=1             #100 = 1%
+LOWER_PERCENTAGE=1
 
+                              
+#========================================================================================#
+#                                LEVERAGE CONDFIG                                        #
+#========================================================================================#
 
-#leverage amountt
+LEVERAGE=true
 LEVERAGE_AMOUNT="0.0001"
 
 #========================================================================================#
@@ -49,10 +77,18 @@ LEVERAGE_AMOUNT="0.0001"
 #========================================================================================#
 
 #ENABLE AND DISABLE FORKING WALLETS (use TRUE for forking only)
-FORKING=true
+FORKING=false
 
 #impersonated signer address
 IMPERSONATED_ACCOUNT="0xF977814e90dA44bFA03b6295A0616a897441aceC"
 
 #WETH WHALE ADDRESS FOR LOADING ETHERS
 WETHWHALE="0x1eED63EfBA5f81D95bfe37d82C8E736b974F477b"
+
+
+#========================================================================================#
+#                                Telegram Bot Settings                                   #
+#========================================================================================#
+
+BOT_ID=""
+CHAT_ID=""
